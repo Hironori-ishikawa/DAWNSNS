@@ -14,12 +14,18 @@ class CreateFollowsTable extends Migration
     public function up()
     {
         Schema::create('follows', function (Blueprint $table) {
-            $table->increments('id')->autoIncrement();
+            $table->increments('id')->autoIncrement(); //自動で 上に入ってくる
             $table->integer('follow');
             $table->integer('follower');
             $table->timestamp('created_at')->useCurrent();
         });
     }
+    // create table follows(
+    // id int(11) primary key auto_increment,
+    // follow int(11),
+    // follower int(11),
+    // created_at timestamp not null default current_timestamp,
+    // )
 
     /**
      * Reverse the migrations.

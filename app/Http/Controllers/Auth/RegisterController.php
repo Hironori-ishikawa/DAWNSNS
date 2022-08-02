@@ -46,13 +46,20 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
+
+    //バリデーション(ルールを設定)
     protected function validator(array $data)
     {
-        return Validator::make($data, [
+        return Validator::make($data, [ //registerメソッド内の$data
             'username' => 'required|string|max:255',
             'mail' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:4|confirmed',
-        ]);
+        ],[
+            //上の入力に対してのメッセージ入力
+            'required' => 'この項目は必須です。',
+            'email' => 'メールアドレスを入力して下さい。',
+            'password' => '4桁以上で入力して下さい。'
+        ])->validate(); //条件外の場合はこちらに表示
     }
 
     /**
@@ -63,10 +70,10 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        return User::create([ //Userテーブルに下記の値を作成する
             'username' => $data['username'],
             'mail' => $data['mail'],
-            'password' => bcrypt($data['password']),
+            'password' => bcrypt($data['password']), //bcrypt dataをハッシュ化する
         ]);
     }
 
@@ -76,11 +83,13 @@ class RegisterController extends Controller
     // }
 
     public function register(Request $request){
-        if($request->isMethod('post')){
-            $data = $request->input();
+        if($request->isMethod('post')){ //post通信の物があった場合
+            $data = $request->input(); //入力された値を$dataに格納
+            $this->validator($data); //validatorメソッド条件内の入力の場合
+            $this->create($data); //createメソッドに$dataを格納
 
-            $this->create($data);
-            return redirect('added');
+            return redirect('added')
+            ->with('name', $data['username']); //$dataからusernameだけ持ってくる。入力された名前
         }
         return view('auth.register');
     }

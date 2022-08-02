@@ -1,0 +1,71 @@
+@charset "UTF-8";
+
+
+html {
+margin: 0px;
+padding: 0px;
+font-size: 10px;
+line-height: 1.5;
+}
+
+body {
+margin: 0px;
+padding: 0px;
+min-height: 100vh;
+}
+
+
+
+header,
+footer,
+article,
+section,
+nav,
+aside,
+div {
+margin: 0px;
+padding: 0px;
+}
+
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+figure,
+figcaption {
+margin: 0px;
+padding: 0px;
+font-size: 100%;
+font-weight: 400;
+}
+
+
+ul,ol {
+list-style-type: none;
+margin: 0px;
+padding: 0px;
+}
+li{
+margin: 0px;
+padding: 0px;
+}
+
+
+dl,dt,dd{
+margin: 0px;
+padding: 0px;
+font-weight: 400;
+}
+
+
+
+
+.clearfix::after {
+content: "";
+display: block;
+clear: both;
+}

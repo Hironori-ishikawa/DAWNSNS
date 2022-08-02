@@ -26,4 +26,17 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    //リメンバートークンを無視して下さい エラーを消すため
+    public function setAttribute($key, $value)
+    {
+        if ($key !== $this->getRememberTokenName()) {
+            parent::setAttribute($key, $value);
+        }
+    }
+
+    public function follows()
+    {
+        return $this->hasMany('App\Follow');
+    }
 }

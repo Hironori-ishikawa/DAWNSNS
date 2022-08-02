@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="description" content="ページの内容を表す文章" />
     <title></title>
-    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/format.css">
     <link rel="stylesheet" href="css/logout.css">
     <!--スマホ,タブレット対応-->
     <meta name="viewport" content="width=device-width,initial-scale=1" />
@@ -20,14 +20,18 @@
     <!--OGPタグ/twitterカード-->
 </head>
 <body>
-    <header>
-        <h1><img src="images/main_logo.png"></h1>
-        <p>Social Network Service</p>
-    </header>
-    <div id="container">
-        @yield('content')
-    </div >
-    <script src="JavaScriptファイルのURL"></script>
-    <script src="JavaScriptファイルのURL"></script>
+    <div class="wrapper">
+        <div class="container">
+            <header>
+                <h1><img src="images/main_logo.png"></h1>
+                <p>Social Network Service</p>
+            </header>
+            <div id="content-area">
+                @yield('content')
+            </div >
+            <script src="JavaScriptファイルのURL"></script>
+            <script src="JavaScriptファイルのURL"></script>
+        </div>
+    </div>
 </body>
 </html>

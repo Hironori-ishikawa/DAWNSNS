@@ -38,10 +38,10 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
-    
+
     public function login(Request $request){
-        if($request->isMethod('post')){
-            
+        if($request->isMethod('post')){ //isMethod() 括弧内は通信手段を指定
+
             $data=$request->only('mail','password');
             // ログインが成功したら、トップページへ
             //↓ログイン条件は公開時には消すこと
@@ -50,5 +50,11 @@ class LoginController extends Controller
             }
         }
         return view("auth.login");
+    }
+
+    //ログアウトメソッド
+    public function logout(){ //logout機能をする
+        Auth::logout(); //ログアウト認証
+        return redirect('/login'); //login画面に戻る
     }
 }

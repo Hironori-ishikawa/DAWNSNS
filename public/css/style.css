@@ -1,11 +1,898 @@
 @charset "utf-8";
-html{
+
+/*==================================================
+初期設定
+iPhone SE の Portrait 横幅 320px
+==================================================*/
+/*------------------------
+    汎用パーツ
+-------------------------*/
+/*    基本文字色    */
+/* 基本文字色 */
+body, input,textarea, select {
+    color: #6C6C6C;
 }
-body{
+input::placeholder, textarea::placeholder, select::placeholder {
+    color: #a5a5a5;
+}
+/* ボタン */
+.btn {
+        border: none;
+    border-radius: 0.6rem;
+    padding: 0.9rem 1.8rem;
+    font-size: 1.2rem;
+    letter-spacing: 0.1rem;
+}
+.btn-red {
+        color: #FFFFFF;
+    background-color: #AD5B59;
+}
+.btn-red:hover,
+.btn-red:active {
+    background-color: #9E3F3F;
+}
+.btn-green {
+    color: #FFFFFF;
+    background-color: #81987C;
+}
+.btn-green:hover,
+.btn-green:active {
+    background-color: #57824D;
+}
+.btn-blue {
+    color: #FFFFFF;
+    background-color: #7D96D2;
+}
+.btn-blue:hover,
+.btn-blue:active {
+    background-color: #4E70B5;
+}
+.btn-gray {
+    color: #FFFFFF;
+    background-color: #AAAAAA;
+}
+.btn-gray:hover,
+.btn-gray:active {
+    color: #FFFFFF;
+    background-color: #777777;
+}
+input[type="file"] {
+    display: none;
+}
+/*    vの形の矢印    */
+.arrow-01 {
+    display: block;
+    position: relative;
+}
+.arrow-01 .arrow {
+    position: relative;
+    padding: 0.6rem 1.0rem 0 1.0rem;
+    vertical-align: middle;
+    text-decoration: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+}
+.arrow-01 .arrow::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0.6rem;
+    bottom: 0;
+    margin: auto;
+    vertical-align: middle;
+    width: 0.6rem;
+    height: 0.6rem;
+    border-top: 1px solid #FFFFFF;
+    border-right: 1px solid #FFFFFF;
+}
+.arrow-01 .close::before {
+    -webkit-transform: rotate(135deg);
+    transform: rotate(135deg);
+    transition: 0.2s;
+}
+.arrow-01 .open::before {
+    -webkit-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+    transition: 0.2s;
+}
+
+/*    ユーザーアイコン画像    */
+.user-icon {        /* 基本設定、このサイズから変更が必要な場合、他CSS定義で上書きする */
+    width: 5.0rem;
+    height: 5.0rem;
+}
+.user-icon img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.upload-thumbnail {
+    display: block;
+    width: 10.0rem;
+    height: 10.0rem;
+}
+.upload-thumbnail img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+}
+/*    区切り    */
+hr.gray-w4 {
+    width: 100%;
+    background-color: #BBBBBB;
+    height: 0.4rem;
+    border: none;
+    margin: 0;
+}
+hr.lightgray-w1 {
+    width: 100%;
+    background-color: #DDDDDD;
+    height: 0.1rem;
+    border: none;
+    margin: 0;
+}
+/*    編集ボタン    */
+.edit-btn {
+    height: 3.2rem;
+}
+.edit-btn img {
+    height: 100%;
+}
+/*    削除ボタン    */
+.delete-btn {
+    display: block;
+    width: 3.0rem;
+}
+.delete-btn .btn-img {
+    width: 3.6rem;
+    height: 3.6rem;
+    background-image: url('../images/trash.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    border-radius: 10%;
+}
+.delete-btn .btn-img:hover,
+.delete-btn .btn-img:active {
+    background-image: url('../images/trash_h.png');
+}
+.user-name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+}
+
+/*------------------------
+    ヘッダー
+-------------------------*/
+header {
+    width: 100%;
+    height: 6.0rem;
+    background-color:#3C4767;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+}
+header .container {
+    display: flex;
+    width: 80%;
+    height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+header .container .logo-area {
+    width: 30%;
+}
+header .container .logo-area img {
+    height: 100%;
+}
+header .container .login-user-area {
+    width: 70%;
+}
+header .container .login-user-area .login-user-info {
+    display: flex;
+    float: right;
+    height: 100%;
+    color: #FFFFFF;
+    font-size: 1.2rem;
+    position: relative;
+}
+header .container .login-user-area .login-user-info .user-name-area {
+    width: 30.0rem;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+    word-break: break-all;
+}
+header .container .login-user-area .login-user-info .user-name-area .user-name {
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    padding-top: 0.3rem;
+    text-align: right;
+}
+header .container .login-user-area .login-user-info .arrow-01 {
+    width: 3.6rem;
+}
+header .container .login-user-area .login-user-info .user-icon {
+    width: 3.6rem;
+    height: 100%;
+    position: relative;
+}
+header .container .login-user-area .login-user-info .user-icon img {
+    width: 3.6rem;
+    height: 3.6rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+}
+
+/*------------------------
+    共通：メインコンテンツ
+-------------------------*/
+.wrapper {
+    position: relative;
+    padding-top: calc(5.0rem + 1.0rem); /* ヘッダーとかぶらないよう、ヘッダーの高さ+余分にずらしておく */
+}
+.wrapper .container {
+    display: flex;
+    flex-flow: row wrap;
+    width: 100%;
+}
+.wrapper .container .content-area {
+    width: 80%;
+}
+nav.user-menu {
+    display: none;
+    position: absolute;
+    right: 10%;
+    width: 20.0rem;
+    background: #FFFFFF;
+    z-index: 150;
+}
+nav.user-menu ul li {
+    text-align: center;
+    border: 1px solid #6C6C6C;
+    border-top: none;
+}
+nav.user-menu ul li:hover {
+    background: #DF563B;
+}
+nav.user-menu ul li a {
+    display: block;
+    line-height: 4.0rem;
+    text-align: center;
+    text-decoration: none;
+    color: #6C6C6C;
+    font-size: 1.2rem;
+}
+nav.user-menu ul li:hover a {
+    color: #FFFFFF;
+}
+
+/*------------------------
+    投稿フォーム
+-------------------------*/
+.post-form-area .post-form-container {
+    display: flex;
+    width: 76%;
+    height: 10.0rem;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+}
+.post-form-area .user-icon img {
+    width: 5.0rem;
+    height: 5.0rem;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+}
+.post-form-area .post-form-container form {
+    display: flex;
+    width: 100%;
+    height: 8.0rem;
+    position: absolute;
+    top: 50%;
+    left: 6.4rem;
+    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+}
+.post-form-area .post-form-container form textarea {
+    display: block;
+    width: 80%;
+    height: 8.0rem;
+    resize: none;
+    padding: 0.2rem 0.4rem;
+    border: none;
+}
+.post-form-area .post-form-container form textarea::placeholder {
+    color: #CCCCCC;
+}
+.post-form-area .post-form-container form textarea:focus {
+    outline: none;
+}
+.post-form-area .post-form-container form textarea:focus-visible {
+    outline: none;
+}
+.post-form-area .post-form-container form .btn-area {
+    position: relative;
+}
+.post-form-area .post-form-container form .btn-area input[type="image"] {
+    display: block;
+    height: 3.4rem;
+    position: absolute;
+    bottom: 0;
+}
+
+/*------------------------
+    サイドバー
+-------------------------*/
+#sideBar {
+    flex: 1;
+    width: 20%;
+    font-size: 1.2rem;
+    border-left: 1px solid #6C6C6C;
+    position: fixed;
+    top: 0;
+    right: 0;
+    padding-top: calc(5.0rem + 1.0rem); /* ヘッダーとかぶらないよう、ヘッダーの高さ+余分にずらしておく */
+    background-color: #FFFFFF;
+}
+#sideBar .container {
+    width: 100%;
+}
+#sideBar .container .inner-container {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+#sideBar .container .inner-container .row {
+    display: flex;
+    justify-content: space-between;
+}
+#sideBar .container .user-name {
+    display: block;
+    width: 100%;
+}
+#sideBar a.btn {
+    display: block;
+    color: #FFFFFF;
+    text-decoration: none;
+    background-color: #5A659E;
+    border-radius: 0.6rem;
+    border: none;
+    width: 9.0rem;
+    padding: 0.6rem 1.2rem;
+    font-size: 1.0rem;
+    letter-spacing: 0.1rem;
+    text-align: center;
+}
+#sideBar a.btn:hover,
+#sideBar a.btn:active {
+    background-color: #202955;
+    transition: 0.2s;
+}
+#sideBar .container div:nth-of-type(2) a.btn {
+    margin-left: auto;
+    margin-right: 0;
+    margin-bottom: 1.0rem;
+}
+#sideBar .container div:nth-of-type(3) a.btn {
+    margin-left: auto;
+    margin-right: auto;
+}
+#sideBar hr {
+    margin-top: 2.4rem;
+    margin-bottom: 2.4rem;
+}
+
+/*------------------------
+    投稿一覧
+-------------------------*/
+.post-area {
+    width: 100%;
+}
+.post-area .post-info-container {
+    width: 100%;
+    display: block;
+}
+.post-info {
+    width: 76%;
+    display: flex;
+    padding: 1.2rem 0;
+    margin-left: auto;
+    margin-right: auto;
+}
+.post-info .user-icon {
+    display: block;
+    padding-right: 2.4rem;
+}
+.post-info .user-post {
+    width: calc(100% - 5.0rem - 2.4rem);
+}
+.post-info .user-post .row {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+.post-info .user-post .user-name {
+    width: 60%;
+}
+.post-info .user-post .post {
+    width: 100%;
+    font-size: 1.3rem;
+}
+.post-no {
+    display: none;
+}
+.post-info .btn-area {
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+}
+.post-info .btn-area .delete-btn {
+  margin-left: 0.6rem;
+}
+
+/*------------------------
+    モーダル
+-------------------------*/
+/*    モーダル共通     */
+.modal {
+    padding: 1.0rem 1.5rem;
+    z-index: 201;
+}
+#overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    transition: 1s all ease;
+    z-index: 200;
+}
+/*    投稿編集モーダル    */
+#editModal {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    border-radius: 8px;
+}
+#editModal .modal-container form {
+    min-width: 40.0rem;
+}
+#editModal .modal-container form textarea {
+    display: block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 5px;
+    border: 1px solid #CCCCCC;
+    resize: none;
+    width: calc(100% - 2.4rem);
+    margin-left: auto;
+    margin-right: auto;
+}
+#editModal .modal-container form textarea::placeholder {
+    color: #CCCCCC;
+}
+#editModal .modal-container form textarea:focus {
+    outline: none;
+}
+#editModal .modal-container form textarea:focus-visible {
+    outline: none;
+}
+#editModal .modal-container form .btn-area {
+    display: block;
+    padding-top: 1.0rem;
+}
+#editModal .modal-container form .btn-area input[type="image"] {
+    display: block;
+    height: 3.2rem;
+    margin-left: auto;
+    margin-right: 0;
+}
+
+/*------------------------
+    トップ画面(/top)
+-------------------------*/
+
+/*------------------------
+    フォローリスト画面(/follow-list)・フォロワーリスト画面(/follower-list)
+-------------------------*/
+/*    ユーザーアイコンリスト    */
+.user-icon-list-area {
+    padding-top: 1.8rem;
+    padding-bottom: 1.8rem;
+}
+.user-icon-list-area h1 {
+    width: 76%;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 2.0rem;
+    color: #CCCCCC;
+}
+.user-icon-list-area .user-icon-list {
+    display: flex;
+    width: 76%;
+    margin-left: auto;
+    margin-right: auto;
+    flex-wrap: wrap;
+}
+.user-icon-list-area .user-icon-list .user-icon {
+    margin: 0.4rem 0.8rem;
+}
+
+/*------------------------
+    ユーザー検索画面(/search)
+-------------------------*/
+.user-search-form-area {
+    padding-top: 2.0rem;
+    padding-bottom: 2.0rem;
+}
+.user-search-form-area form {
+    display: flex;
+    width: 76%;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+}
+.user-search-form-area form input[type="text"] {
+    width: 88%;
+    height: 2.4rem;
+    margin-right: 1.2rem;
+    padding-left: 0.6rem;
+    padding-right: 0.6rem;
+}
+.user-search-form-area form input[type="image"] {
+    display: block;
+    height: 2.4rem;
+    position: absolute;
+    top: 50%;
+    left: calc(88% + 2.4rem); /* (input[type="text"]の幅) + (input[type="text"]との隙間) */
+    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+}
+.user-list-area {
+    padding-top: 2.0rem;
+    padding-bottom: 2.0rem;
+}
+.user-list-area .user-info {
+    display: flex;
+    width: 76%;
+    padding-top: 1.2rem;
+    padding-bottom: 1.2rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+.user-list-area .user-info .user-icon {
+    padding-right: 1.0rem;
+}
+.user-list-area .user-info .user-name-area {
+    width: calc(100% - 5.0rem - 1.0rem - 25%); /* (親要素の幅の100%) ー (user-iconの幅) ー (padding) ー (formで使う幅) */
+    padding-right: 1.0rem;
+    position: relative;
+}
+.user-list-area .user-info .user-name-area .user-name {
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    word-break: break-all;
+    font-size: 1.4rem;
+    text-overflow: clip;
+    white-space: inherit;
+}
+.user-list-area .user-info form {
+    width: calc(100% - 5.0rem - 1.0rem - 75%); /* (親要素の幅の100%) ー (user-iconの幅) ー (padding) ー (user-name-areaで使う幅) */
+    margin-left: auto;
+    margin-right: 0;
+}
+/*------------------------
+    プロフィール編集画面(/profile)
+-------------------------*/
+.profile-area {
+    display: flex;
+    width: 76%;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 1.5rem;
+}
+.profile-area .user-icon {
+    margin-top: 1.6rem;
+}
+.profile-area form {
+    width: 40.0rem;
+    margin-left: 4.0rem;
+}
+.profile-area form .profile-items {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 2.4rem;
+    margin-bottom: 2.4rem;
+}
+.profile-area form .profile-items .label {
+    display: block;
+    margin-left: 0;
+    margin-right: auto;
+    width: 40%;
+}
+.profile-area form .profile-items .value {
+    display: block;
+    margin-left: auto;
+    margin-right: 0;
+    border: none;
+    border-bottom: 1px #979797 solid;
+    font-size: 1.5rem;
+    padding: 0.3rem 0.6rem;
+}
+.profile-area form .profile-items input.value {
+    background-color: #F2F2F2;
+    width: 50%;
+}
+.profile-area form .profile-items p.value {
+    background-color: #FFFFFF;
+    width: 50%;
+}
+.profile-area form .profile-items textarea.value {
+    background-color: #F2F2F2;
+    resize: none;
+    width: 50%;
+    height: 10.0rem;
+}
+.profile-area form .profile-items .inner-container {
+    display: block;
+    width: 53.2%;
+}
+.profile-area form .profile-items .upload-thumbnail {
+    margin-top: 1.6rem;
+    margin-bottom: 1.6rem;
+}
+/*==================================================
+一般的な Android の Portrait 横幅 360px
+==================================================*/
+@media screen and (min-width:360px) {
+
+}
+
+
+/*==================================================
+iPhone 8,7,6 の Portrait 横幅 375px
+==================================================*/
+@media screen and (min-width:375px) {
+
+}
+
+
+/*==================================================
+iPhone X の Portrait 横幅 375px 高さ 812px
+==================================================*/
+@media screen and (width:375px) and (height:812px) {
+
+}
+
+
+/*==================================================
+iPhone 8plus,7plus,6plus の Portrait 横幅 414px
+==================================================*/
+@media screen and (min-width:414px) {
+
+}
+
+
+/*==================================================
+iPhone SE の Landscape 横幅 568px
+==================================================*/
+@media screen and (min-width:568px) {
+
+}
+
+
+/*==================================================
+一般的な Android の Landscape 横幅 640px
+==================================================*/
+@media screen and (min-width:640px) {
+
+}
+
+
+/*==================================================
+iPhone 8,7,6 の Landscape 横幅 667px
+==================================================*/
+@media screen and (min-width:667px) {
+
+}
+
+
+/*==================================================
+iPhone 8plus,7plus,6plus の Landscape 横幅 736px
+==================================================*/
+@media screen and (min-width:736px) {
+
+}
+
+
+/*==================================================
+iPad の Portrait 横幅 768px
+==================================================*/
+@media screen and (min-width:768px) {
+
+}
+
+
+/*==================================================
+iPhone X の Landscape 横幅 812px 高さ 375px
+==================================================*/
+@media screen and (width:812px) and (height:375px) {
+
+}
+
+
+/*==================================================
+iPad Pro 10.5インチ の Portrait 横幅 834px
+==================================================*/
+@media screen and (min-width:834px) {
+
+}
+
+
+/*==================================================
+iPad の Landscape 横幅 1024px
+==================================================*/
+@media screen and (min-width:1024px) {
+
+}
+
+
+/*==================================================
+iPad Pro 12.9インチ の Portrait 横幅 1024px 高さ 1366px
+==================================================*/
+@media screen and (width:1024px) and (height:1366px) {
+
+}
+
+
+/*==================================================
+iPad Pro 10.5インチ の Landscape 横幅 1112px
+==================================================*/
+@media screen and (min-width:1112px) {
+
+}
+
+
+/*==================================================
+iPad Pro 12.9インチ の Landscape 横幅 1366px 高さ 1024px
+==================================================*/
+@media screen and (width:1366px) and (height:1024px) {
+
+}
+
+
+/*==================================================
+PC 1366px 以上
+==================================================*/
+@media screen and (min-width:1366px) {
+
+}
+
+
+/*==================================================
+プリントアウト
+==================================================*/
+@media print {
+
+}
+
+
+
+#head{
+    display: flex;
+    justify-content: space-between;
+}
+img {
+    height: 55px;
+    width: 55px;
+}
+.main_logo {
+    height: 75px;
+    width: 160px;
 }
 /* header */
 header{
     background:#3C4767;
+}
+
+/*アコーディオン全体*/
+.accordion-area{
+    list-style: none;
+    width: 96%;
+    max-width: 900px;
+    margin:0 auto;
+}
+
+.accordion-area li{
+    margin: 10px 0;
+}
+
+.accordion-area section {
+	border: 0px solid #ccc;
+}
+
+/*アコーディオンタイトル*/
+.title {
+    position: relative;/*+マークの位置基準とするためrelative指定*/
+    cursor: pointer;
+    font-size:1rem;
+    font-weight: normal;
+    padding: 3% 3% 3% 50px;
+    transition: all .5s ease;
+}
+
+/*アイコンの＋と×*/
+.title::before,
+.title::after{
+    position: absolute;
+    content:'';
+    width: 15px;
+    height: 2px;
+    background-color: #333;
+}
+.title::before{
+    top:48%;
+    left: 15px;
+    transform: rotate(0deg);
+}
+
+.title::after{
+    top:48%;
+    left: 15px;
+    transform: rotate(90deg);
+
+}
+/*　closeというクラスがついたら形状変化　*/
+.title.close::before{
+	transform: rotate(45deg);
+}
+
+.title.close::after{
+	transform: rotate(-45deg);
+}
+
+/*アコーディオンで現れるエリア*/
+.box {
+    display: none;/*はじめは非表示*/
+    background: #f3f3f3;
+	margin:0 3% 3% 3%;
+    padding: 3%;
+}
+
+.icon-menu{
+    display: flex;
+    margin-right: 20px;
 }
 
 /* main content */
@@ -16,7 +903,97 @@ header{
 #container{
     flex: 0 0 80%;
 }
+
+.form-group{
+    padding: 0 0 10% 5px;
+    overflow: hidden;
+    margin: 10px auto;
+    font-size: 80%;
+    border-bottom: solid 5px #eeeeeeee;
+    display: flex;
+    justify-content: space-between;
+}
+
+.post{
+    padding: 10px 0 10% 5px;
+    overflow: hidden;
+    margin: 10px auto;
+    font-size: 80%;
+    border-bottom: solid 5px #eeeeeeee;
+}
+
+.post-button{
+    margin-left: auto;
+    margin-right: 30%;
+}
+
+.post-text{
+
+}
+
+.post-list{
+    font-weight: 100;
+}
+
 #side-bar{
     flex: 0 0 19%;
     border-left: 1px solid #6C6C6C;
+}
+
+.modal-main {
+    display: none;
+}
+
+.inner-content{
+  overflow-y: scroll;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 100px;
+  margin-left: 200px;
+  width: 50%;
+  height: 50%;
+  background-color: #ffffff;
+  color: #666666;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2;
+}
+
+.login-form{
+    font-size: 10px;
+}
+
+#head-menu{
+    top: 0px;
+    right: 0px;
+    display: inline;
+}
+
+.rogin-form{
+    position: fixed;
+    top: auto;
+}
+
+.follow-list{
+    padding: 0 0 10% 5px;
+    overflow: hidden;
+    margin: 10px auto;
+    font-size: 80%;
+    border-bottom: solid 5px #eeeeeeee;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 10px;
+}
+
+.follower-list{
+    padding: 0 0 10% 5px;
+    overflow: hidden;
+    margin: 10px auto;
+    font-size: 80%;
+    border-bottom: solid 5px #eeeeeeee;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 10px;
 }

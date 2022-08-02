@@ -6,8 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="description" content="ページの内容を表す文章" />
     <title></title>
-    <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="{{asset('css/reset.css')}}"> <!--assetルートディレクトリをpublicからにする-->
+    <link rel="stylesheet" href="{{asset('css/style.css')}}">
     <!--スマホ,タブレット対応-->
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <!--サイトのアイコン指定-->
@@ -17,48 +17,67 @@
     <link rel="icon" href="画像URL" sizes="62x62" type="image/png" />
     <!--iphoneのアプリアイコン指定-->
     <link rel="apple-touch-icon-precomposed" href="画像のURL" />
-    <!--OGPタグ/twitterカード-->
+    <!--jqueryとのリンク-->
+
 </head>
 <body>
     <header>
-        <div id = "head">
-        <h1><a><img src="images/logo.png"></a></h1>
-            <div id="">
-                <div id="">
-                    <p>〇〇さん<img src="images/arrow.png"></p>
-                <div>
-                <ul>
-                    <li><a href="/top">ホーム</a></li>
-                    <li><a href="/profile">プロフィール</a></li>
-                    <li><a href="/logout">ログアウト</a></li>
-                </ul>
+        <div class="container">
+            <div class="logo-area">
+                <a href="/top"><img src="{{asset('images/main_logo.png')}}"></a>
+            </div>
+            <div class="login-user-area" id="menu">
+                <div class="login-user-info">
+                    <div class="user-name-area">
+                        <span class="user-name">{{ $username }}さん</span>
+                    </div>
+                    <div class="arrow-01" id="userMenuArrow"><div class="arrow close"></div></div>
+                    <div class="user-icon"><img src="{{asset('images/'.$userimage)}}"></div>
+                </div>
             </div>
         </div>
     </header>
-    <div id="row">
-        <div id="container">
-            @yield('content')
-        </div >
-        <div id="side-bar">
-            <div id="confirm">
-                <p>〇〇さんの</p>
-                <div>
-                <p>フォロー数</p>
-                <p>〇〇名</p>
-                </div>
-                <p class="btn"><a href="">フォローリスト</a></p>
-                <div>
-                <p>フォロワー数</p>
-                <p>〇〇名</p>
-                </div>
-                <p class="btn"><a href="">フォロワーリスト</a></p>
+    <div class="wrapper" id="mainContent">
+        <div class="container">
+            <nav class="user-menu">
+                <ul>
+                    <li><a href="/top">ホーム</a></li>
+                    <li><a href="/profile">プロフィール編集</a></li>
+                    <li><a href="/logout">ログアウト</a></li>
+                </ul>
+            </nav>
+            <div class="content-area">
+                @yield('content')
             </div>
-            <p class="btn"><a href="">ユーザー検索</a></p>
+            <div id="sideBar">
+                <div class="container">
+                    <div class="label"><span class="user-name">
+                        <p>{{ $username }}</p>さんの</div>
+                    </div>
+                    <div class="inner-container">
+                        <div class="row">
+                            <div class="label">フォロー数</div>
+                            <div class="value-display">{{ $countFollow }}名</div>
+                        </div>
+                        <a class="btn" href="/followList">フォローリスト</a>
+                        <div class="row">
+                            <div class="label">フォロワー数</div>
+                            <div class="value-display">{{ $countFollower }}名</div>
+                        </div>
+                        <a class="btn" href="/followerList">フォロワーリスト</a>
+                    </div>
+                    <hr class="lightgray-w1">
+                    <div class="inner-container">
+                        <a class="btn" href="/search">ユーザー検索</a>
+                        <a class="btn" href="/ranking">ランキング</a>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-    <footer>
-    </footer>
-    <script src="JavaScriptファイルのURL"></script>
-    <script src="JavaScriptファイルのURL"></script>
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="/js/script.js"></script>
 </body>
 </html>

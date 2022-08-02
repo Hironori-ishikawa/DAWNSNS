@@ -3,7 +3,7 @@
 @section('content')
 
 <div id="clear">
-<p>〇〇さん、</p>
+<p>{{session('name')}}さん、</p> <!--session一時的に保存-->
 <p>ようこそ！DAWNSNSへ！</p>
 <p>ユーザー登録が完了しました。</p>
 <p>さっそく、ログインをしてみましょう。</p>

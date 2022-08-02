@@ -18,11 +18,19 @@ class CreateUsersTable extends Migration
             $table->string('username',255);
             $table->string('mail',255);
             $table->string('password',255);
-            $table->string('bio',400)->nullable();
-            $table->string('images',255)->default('dawn.png')->nullable();
+            $table->string('bio',400)->nullable(); //nullable空欄でも可能
+            $table->string('images',255)->default('dawn.png')->nullable(); //default デフォルト値
             $table->timestamps();
         });
     }
+    //create table users(
+    // id int(11) primary key auto_increment,
+    // username varchar(255),
+    // mail varchar(255) not null,
+    // password varchar(255) not null,
+    // bio varchar(400),
+    // images varchar(255)
+    // );
 
     /**
      * Reverse the migrations.

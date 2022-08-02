@@ -1,9 +1,189 @@
-@chasert "utf-8";
+@charset "UTF-8";
 
-html{
-    height: 100%;
+/*------------------------
+    共通パーツ
+-------------------------*/
+body {
+    font-family: 'Noto Sans JP', sans-serif;
+    color: #FFFFFF;
+    background: -moz-linear-gradient(top,#3C4767 55%,#DF563B);
+    background: -webkit-linear-gradient(top,#3C4767 55%,#DF563B);
+    background: linear-gradient(top,#3C4767 55%,#DF563B);
 }
-body{
-    height: 100%;
-    background: #3C4767;
+p.error {
+    color: #e77f68;
+    font-size: 1.24rem;
+}
+input[type="submit"] {
+    color: #FFFFFF;
+    display: block;
+    background-color: #5A659E;
+    border-radius: 0.6rem;
+    border: none;
+    padding-top: 0.6rem;
+    padding-bottom: 0.6rem;
+    font-size: 1.4rem;
+    letter-spacing: 0.1rem;
+}
+a.btn {
+    display: block;
+    color: #FFFFFF;
+    text-decoration: none;
+    background-color: #5A659E;
+    border-radius: 0.6rem;
+    border: none;
+    padding-top: 0.6rem;
+    padding-bottom: 0.6rem;
+    font-size: 1.4rem;
+    letter-spacing: 0.1rem;
+    text-align: center;
+}
+input[type="submit"]:hover, input[type="submit"]:active,
+a.btn:hover, a.btn:active {
+    background-color: #202955;
+    transition: 0.2s;
+}
+/*------------------------
+    ラッパー(ここでは、レイアウト調整用途で、内容を包み込むための要素として使用)
+-------------------------*/
+.wrapper {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+}
+/*------------------------
+    コンテナ(ここでは、レイアウト調整用途兼、内容を1つのグループとして意味あるかたまりの1単位とするために使用)
+-------------------------*/
+.container {
+    width: 36rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+}
+/*------------------------
+    ヘッダー
+-------------------------*/
+header {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+header h1 img {
+    display: block;
+    width: 18rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+header p {
+    font-size: 2.8rem;
+    letter-spacing: 0.1rem;
+    text-align: center;
+    margin-bottom: 6.0rem;
+}
+/*------------------------
+    コンテンツエリア
+-------------------------*/
+.content-area {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: rgba(0, 0, 0, 0.1);
+    font-size: 1.4rem;
+    letter-spacing: 0.1rem;
+    border: none;
+    border-radius: 0.6rem;
+}
+.content-area h2 {
+    width: 100%;
+    text-align: center;
+    padding-top: 3.0rem;
+    padding-bottom: 3.0rem;
+}
+.content-area label {
+    display: block;
+    width: 80%;
+    margin-top: 1.6rem;
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 0.6rem;
+    font-weight: 100;
+}
+.content-area form input.input {
+    display: block;
+    width: 75%;
+    border: none;
+    border-radius: 0.6rem;
+    padding: 0.4rem 0.8rem;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 1.8rem;
+}
+.content-area form div:nth-of-type(1) { /* サブミットボタン格納エリア */
+    display: block;
+    width: 80%;
+    margin-top: 2.4rem;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0;
+}
+.content-area form div input[type="submit"] {
+    width: 50%;
+    margin-left: auto;
+    margin-right: 0;
+}
+.content-area form div:nth-of-type(2) { /* フォーム最下部リンク格納エリア */
+    width: 100%;
+    text-align: center;
+    padding-top: 3.0rem;
+    padding-bottom: 3.0rem;
+}
+.content-area form div:nth-of-type(2) a {
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 1.2rem;
+    letter-spacing: 0.1rem;
+}
+.content-area form div:nth-of-type(2) a:hover,
+.content-area form div:nth-of-type(2) a:active {
+    color: rgba(255, 255, 255, 1.0);
+    transition: 0.2s;
+}
+.content-area form p.error {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.content-area div.complete {
+    padding-top: 3.6rem;
+    padding-bottom: 3.6rem;
+}
+.content-area div.complete p { /* ユーザー登録完了後メッセージ */
+    font-size: 1.3rem;
+}
+.content-area div.complete p:nth-of-type(1) {
+    width: 84%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    margin-bottom: 2.4rem;
+}
+.content-area div.complete p:nth-of-type(2) {
+    width: 84%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+    margin-bottom: 2.4rem;
+}
+.content-area div.complete div.username {
+    font-size: 1.6rem;
+    text-align: center;
+    margin-bottom: 0.4rem;
+}
+.content-area div.complete a.btn {
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
 }

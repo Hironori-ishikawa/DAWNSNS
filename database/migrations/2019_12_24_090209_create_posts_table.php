@@ -20,6 +20,13 @@ class CreatePostsTable extends Migration
             $table->timestamps();
         });
     }
+    //create table posts(
+    //  id int(11) primary key auto_increment,
+    //  user_id int(11),
+    //  posts varchar(500) not null,
+    //  created_at timestamp not null default current_timestamp,
+    //  updated_at timestamp not null default current_timestamp on update current_timestamp
+    //);
 
     /**
      * Reverse the migrations.
